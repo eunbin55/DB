@@ -1,0 +1,20 @@
+SET SERVEROUTPUT ON;
+DECLARE
+    V_WRONG VARCHAR2(20);
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('1');
+    
+    SELECT dname INTO V_WRONG
+    FROM dept
+    WHERE deptno in (10, 20);
+    
+    DBMS_OUTPUT.PUT_LINE('2');
+    
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('예외처리: 사전 정의 외 오류 발생');
+        DBMS_OUTPUT.PUT_LINE('SQLCODE: '||TO_CHAR(SQLCODE));
+        DBMS_OUTPUT.PUT_LINE('SQLERRM: '||SQLERRM);
+    
+END;
+/

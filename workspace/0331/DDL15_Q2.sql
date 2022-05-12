@@ -1,0 +1,5 @@
+--p.324     Q2.
+ALTER TABLE emp_hw
+ADD BIGO VARCHAR2(20);
+
+SELECT * FROM EMP_HW;

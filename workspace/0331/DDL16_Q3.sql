@@ -1,0 +1,5 @@
+--p.324     Q3.
+ALTER TABLE emp_hw
+MODIFY (bigo VARCHAR2(30));
+
+SELECT * FROM EMP_HW;

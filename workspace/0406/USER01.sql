@@ -1,0 +1,29 @@
+--계정만들기
+--USER_ID: ORCLSTUDY
+--비번: ORACLE
+
+
+ALTER SESSION SET "_oracle_script" = true;
+--Session이(가) 변경되었습니다.
+
+CREATE USER ORCLSTUDY
+IDENTIFIED BY ORACLE;
+--User ORCLSTUDY이(가) 생성되었습니다.
+
+--권한 할당
+GRANT CREATE SESSION TO ORCLSTUDY;
+--Grant을(를) 성공했습니다.
+
+SELECT *
+FROM DBA_USERS t1
+WHERE t1.username = 'ORCLSTUDY'
+;
+
+--사용자 비번 변경: ORACLE -> ORCL
+ALTER USER ORCLSTUDY
+IDENTIFIED BY ORCL;
+
+--사용자 삭제하기
+DROP USER ORCLSTUDY
+;
+

@@ -1,0 +1,10 @@
+CREATE TABLE T_IDEN
+(
+    NO number generated as identity,
+    name VARCHAR2(10)
+);
+
+INSERT INTO T_IDEN (NAME) VALUES('AAA');
+INSERT INTO T_IDEN (NAME) VALUES('BBB');
+
+SELECT * FROM T_IDEN;

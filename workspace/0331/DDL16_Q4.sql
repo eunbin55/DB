@@ -1,0 +1,5 @@
+--p.324     Q4.
+ALTER TABLE emp_hw
+RENAME COLUMN bigo TO remark;
+
+SELECT * FROM EMP_HW;

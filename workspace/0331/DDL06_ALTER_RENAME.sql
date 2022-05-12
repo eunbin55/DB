@@ -1,0 +1,7 @@
+--테이블의 컬럼 이름 변경
+--LOCATION2 -> LOC로 변경
+
+ALTER TABLE dept6
+RENAME COLUMN LOCATION2 TO LOC;
+
+SELECT * FROM dept6;

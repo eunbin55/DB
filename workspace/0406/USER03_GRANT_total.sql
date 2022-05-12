@@ -1,0 +1,57 @@
+--*tablespace 정보 확인
+SELECT tablespace_name,
+       file_name
+FROM dba_data_files;
+
+--USERS	C:\APP\EUNBI\PRODUCT\18.0.0\ORADATA\XE\USERS01.DBF
+--UNDOTBS1	C:\APP\EUNBI\PRODUCT\18.0.0\ORADATA\XE\UNDOTBS01.DBF
+--SYSTEM	C:\APP\EUNBI\PRODUCT\18.0.0\ORADATA\XE\SYSTEM01.DBF
+--SYSAUX	C:\APP\EUNBI\PRODUCT\18.0.0\ORADATA\XE\SYSAUX01.DBF
+
+
+--*tablespace 생성
+CREATE TABLESPACE goodman_ts
+DATAFILE 'C:\APP\EUNBI\PRODUCT\18.0.0\ORADATA\XE\goodman01.DBF'
+SIZE 300M AUTOEXTEND ON NEXT 30M;
+
+--*사용자 생성
+--12c 이전 방법으로 계정 생성
+ALTER SESSION SET "_oracle_script" = true;
+
+CREATE USER goodman
+IDENTIFIED BY pcwk
+DEFAULT TABLESPACE GOODMAN_TS
+TEMPORARY TABLESPACE temp;
+
+--*권한부여
+--방법1
+GRANT RESOURCE, CREATE SESSION, CREATE TABLE TO goodman;
+--방법2
+--GRANT DBA TO goodman;
+--sys에서 작업
+ALTER USER goodman DEFAULT TABLESPACE goodman_ts QUOTA UNLIMITED ON goodman_ts;
+
+
+--*goodman접속: TABLE, INSERT, SELECT
+
+--*테이블 생성
+CREATE TABLE dept(
+    deptno NUMBER(4) CONSTRAINT pk_dept PRIMARY KEY,
+    dname VARCHAR2(30),
+    loc VARCHAR2(50)
+);
+
+desc dept;
+
+INSERT INTO dept VALUES (10, 'EDUCATION','SEOUL');
+
+
+--조회
+SELECT * FROM dept;
+
+
+
+
+
+
+

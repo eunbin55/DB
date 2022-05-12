@@ -1,0 +1,6 @@
+SELECT *
+FROM SCOTT.temp;
+
+INSERT INTO scott.temp VALUES ('TEST', 'FROM ORCLSTUDY');
+
+COMMIT;
